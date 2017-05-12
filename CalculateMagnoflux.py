@@ -19,7 +19,7 @@ for j in range(len(Magnetic)):
         windspeed = "%0.1e [cm/s]" %Solarwinds[i]
         for g in range(len(x)):
 
-            Flux.append(((Solarwind[i]*(Magnetic[j]**2)*(x[g]**2))/(angle*(d**2)*(2.8e6*Magnetic[j])))/(10e-23))
+            Flux.append(((epsilon*(2e-3)*Solarwind[i]*(Magnetic[j]**2)*(x[g]**2))/(angle*(d**2)*(2.8e6*Magnetic[j])))/(10e-23))
         plt.plot(x,Flux,label = windspeed)
     plt.yscale('log')
     plt.ylabel("Flux [Jy]")
