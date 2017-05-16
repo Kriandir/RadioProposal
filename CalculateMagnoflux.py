@@ -10,12 +10,13 @@ Solarwinds = [[10e5,50e5,100e5,200e5,400e5],[10e5,50e5,100e5,200e5,400e5]]
 # THIS IS NOT TRUE FOR JUPITER GOTTA FIX IT
 Solarwind = abs(np.asarray(Solarwinds)-2.015e7)
 
-# THERE IS A BETTER SOLUTION FOR THE FIGURES GOTTA FIND IT ON THE OTHER HAND 4 DIFFERENT MAGNETIC FIELDS IS FINE
+# THERE IS A BETTER SOLUTION FOR THE FIGURES GOTTA FIND IT ON THE OTHER HAND 4 DIFFERENT MAGNETIC
 Magnetic = [[10,20,30,40],[11,12,13,14]]
 x = np.linspace(1,3,num=30)*(1.006*7.140e9)
 d = [80*3.086e18,1.496e13*4.2]
 sangle = 4*np.pi
 epsilon = [1,1]
+eta = 2e-3
 Flux = []
 Planets=["Wasp43b","Jupiter"]
 
@@ -31,7 +32,8 @@ for h in range(len(Planets)):
             windspeed = "%0.1e [cm/s]" %Solarwinds[h][i]
             for g in range(len(x)):
 
-                Flux.append(((epsilon[h]*(2e-3)*Solarwind[h][i]*(Magnetic[h][j]**2)*(x[g]**2))/(sangle*(d[h]**2)*(2.8e6*Magnetic[h][j])))/(10e-23))
+                Flux.append(((epsilon[h]*eta*Solarwind[h][i]*(Magnetic[h][j]**2)*(x[g]**2))/(sangle*(d[h]**2)*(2.8e6*Magnetic[h][j])))/(10e-23))
+                print 2.8e6*Magnetic[h][j]
 
             # Plot stuff
             if j >= 2:
