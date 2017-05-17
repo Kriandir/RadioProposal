@@ -21,7 +21,7 @@ Flux = []
 Planets=["Wasp43b","Jupiter"]
 
 # Make figures for multiple planets
-for h in range(len(Planets)):
+for h in range(len(Planets)-1):
     exo = plotz.Plotfig(Planets[h])
     exo.createfig()
 
@@ -33,7 +33,7 @@ for h in range(len(Planets)):
             for g in range(len(x)):
 
                 Flux.append(((epsilon[h]*eta*Solarwind[h][i]*(Magnetic[h][j]**2)*(x[g]**2))/(sangle*(d[h]**2)*(2.8e6*Magnetic[h][j])))/(10e-23))
-                print 2.8e6*Magnetic[h][j]
+
 
             # Plot stuff
             if j >= 2:
